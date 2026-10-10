@@ -47,7 +47,7 @@ const field = "mt-1 w-full rounded-2xl border border-input bg-card/80 px-4 py-3 
 
 function Index() {
   const [copied, setCopied] = useState(false);
-  const [errors, setErrors] = useState<Record<string, boolean>>({});
+  const [errors, setErrors] = useState({ nama: false, email: false, kebutuhan: false });
 
   const copyNumber = async () => {
     try {
