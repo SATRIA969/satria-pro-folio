@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KontakRouteImport } from './routes/kontak'
+import { Route as LayananRouteImport } from './routes/layanan'
+import { Route as ProsesRouteImport } from './routes/proses'
+import { Route as TentangRouteImport } from './routes/tentang'
+import { Route as KaryaIndexRouteImport } from './routes/karya.index'
+import { Route as KaryaSlugRouteImport } from './routes/karya.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KontakRoute = KontakRouteImport.update({
+  id: '/kontak',
+  path: '/kontak',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LayananRoute = LayananRouteImport.update({
+  id: '/layanan',
+  path: '/layanan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProsesRoute = ProsesRouteImport.update({
+  id: '/proses',
+  path: '/proses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TentangRoute = TentangRouteImport.update({
+  id: '/tentang',
+  path: '/tentang',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KaryaIndexRoute = KaryaIndexRouteImport.update({
+  id: '/karya/',
+  path: '/karya/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KaryaSlugRoute = KaryaSlugRouteImport.update({
+  id: '/karya/$slug',
+  path: '/karya/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/kontak': typeof KontakRoute
+  '/layanan': typeof LayananRoute
+  '/proses': typeof ProsesRoute
+  '/tentang': typeof TentangRoute
+  '/karya/$slug': typeof KaryaSlugRoute
+  '/karya/': typeof KaryaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/kontak': typeof KontakRoute
+  '/layanan': typeof LayananRoute
+  '/proses': typeof ProsesRoute
+  '/tentang': typeof TentangRoute
+  '/karya/$slug': typeof KaryaSlugRoute
+  '/karya': typeof KaryaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/kontak': typeof KontakRoute
+  '/layanan': typeof LayananRoute
+  '/proses': typeof ProsesRoute
+  '/tentang': typeof TentangRoute
+  '/karya/$slug': typeof KaryaSlugRoute
+  '/karya/': typeof KaryaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/kontak'
+    | '/layanan'
+    | '/proses'
+    | '/tentang'
+    | '/karya/$slug'
+    | '/karya/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/kontak'
+    | '/layanan'
+    | '/proses'
+    | '/tentang'
+    | '/karya/$slug'
+    | '/karya'
+  id:
+    | '__root__'
+    | '/'
+    | '/kontak'
+    | '/layanan'
+    | '/proses'
+    | '/tentang'
+    | '/karya/$slug'
+    | '/karya/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KontakRoute: typeof KontakRoute
+  LayananRoute: typeof LayananRoute
+  ProsesRoute: typeof ProsesRoute
+  TentangRoute: typeof TentangRoute
+  KaryaSlugRoute: typeof KaryaSlugRoute
+  KaryaIndexRoute: typeof KaryaIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kontak': {
+      id: '/kontak'
+      path: '/kontak'
+      fullPath: '/kontak'
+      preLoaderRoute: typeof KontakRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/layanan': {
+      id: '/layanan'
+      path: '/layanan'
+      fullPath: '/layanan'
+      preLoaderRoute: typeof LayananRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proses': {
+      id: '/proses'
+      path: '/proses'
+      fullPath: '/proses'
+      preLoaderRoute: typeof ProsesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tentang': {
+      id: '/tentang'
+      path: '/tentang'
+      fullPath: '/tentang'
+      preLoaderRoute: typeof TentangRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/karya/': {
+      id: '/karya/'
+      path: '/karya'
+      fullPath: '/karya/'
+      preLoaderRoute: typeof KaryaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/karya/$slug': {
+      id: '/karya/$slug'
+      path: '/karya/$slug'
+      fullPath: '/karya/$slug'
+      preLoaderRoute: typeof KaryaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KontakRoute: KontakRoute,
+  LayananRoute: LayananRoute,
+  ProsesRoute: ProsesRoute,
+  TentangRoute: TentangRoute,
+  KaryaSlugRoute: KaryaSlugRoute,
+  KaryaIndexRoute: KaryaIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
