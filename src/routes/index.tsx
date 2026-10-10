@@ -202,7 +202,7 @@ function Index() {
             Karya <em className="font-serif font-normal">Pilihan</em>
           </h2>
         </Reveal>
-        <div className="mt-14 grid gap-10 md:grid-cols-2">
+        <div className="mt-14">
           <Reveal>
             <Link to="/karya/$slug" params={{ slug: "sabora" }} className="group block">
               <div className="relative overflow-hidden rounded-[28px] bg-accent/40 p-3 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-soft">
@@ -212,7 +212,7 @@ function Index() {
                   loading="lazy"
                   width={1280}
                   height={896}
-                  className="aspect-[4/3] w-full rounded-[20px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  className="aspect-[4/3] w-full rounded-[20px] object-cover transition-transform duration-700 group-hover:scale-[1.03] md:aspect-[16/9]"
                 />
                 <span className="absolute bottom-6 right-6 flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm text-primary-foreground opacity-0 transition-opacity group-hover:opacity-100">
                   Lihat Studi Kasus <ArrowUpRight className="size-4" />
