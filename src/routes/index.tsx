@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Copy, Github, MessageCircle } from "lucide-react";
 import { useState, type FormEvent, type ReactNode } from "react";
 import portrait from "@/assets/portrait.png";
-import sabora from "@/assets/sabora.jpg";
 import { GITHUB_URL, WHATSAPP_DISPLAY, WHATSAPP_URL, pageMeta } from "@/lib/site";
 import { PROJECTS } from "@/data/projects";
 
