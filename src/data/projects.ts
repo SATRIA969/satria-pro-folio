@@ -41,8 +41,7 @@ export const PROJECTS: Project[] = [
       "Hasilnya adalah konsep website yang terasa semewah restorannya: halaman termuat cepat, menu mudah dibaca di HP, dan alur reservasi jelas dari pertama kali halaman dibuka.",
     teknologi: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     gambar: [{ src: saboraHero, alt: "Tampilan halaman utama Sabora" }],
-    // TODO: isi URL demo jika sudah ada; kosongkan untuk menyembunyikan tombol demo & preview perangkat
-    linkDemo: "",
+    linkDemo: "https://saborarepository.vercel.app/",
     // TODO: ganti dengan skor Lighthouse asli setelah diukur
     lighthouse: { performance: 98, seo: 100, accessibility: 96, bestPractices: 100 },
   },
