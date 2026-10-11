@@ -48,6 +48,16 @@ function KaryaPage() {
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-2 px-1">
                 <h2 className="mr-auto text-xl font-medium">{p.judul}</h2>
+                {p.linkDemo && (
+                  <a
+                    href={p.linkDemo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs text-primary-foreground transition-opacity hover:opacity-80"
+                  >
+                    Lihat Live <ArrowUpRight className="size-3.5" />
+                  </a>
+                )}
                 <span className="rounded-full border border-border px-3 py-1 text-xs">{p.kategori}</span>
                 <span className="rounded-full border border-border px-3 py-1 text-xs">{p.tahun}</span>
                 <span className="rounded-full bg-accent px-3 py-1 text-xs text-accent-foreground">
