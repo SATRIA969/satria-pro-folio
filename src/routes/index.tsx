@@ -4,6 +4,7 @@ import { useState, type FormEvent, type ReactNode } from "react";
 import portrait from "@/assets/portrait.png";
 import sabora from "@/assets/sabora.jpg";
 import { GITHUB_URL, WHATSAPP_DISPLAY, WHATSAPP_URL, pageMeta } from "@/lib/site";
+import { PROJECTS } from "@/data/projects";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -119,12 +120,12 @@ function Index() {
                 Aku membuat website yang rapi, cepat, dan siap dipakai untuk bisnis, mulai dari konsep sampai online.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <a href="#karya" className={`${btn} bg-primary text-primary-foreground hover:shadow-soft`}>
+                <Link to="/karya" className={`${btn} bg-primary text-primary-foreground hover:shadow-soft`}>
                   Lihat Karya
                   <span className="grid size-6 place-items-center rounded-full bg-accent text-accent-foreground">
                     <ArrowUpRight className="size-3.5" />
                   </span>
-                </a>
+                </Link>
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"
@@ -202,29 +203,31 @@ function Index() {
             Karya <em className="font-serif font-normal">Pilihan</em>
           </h2>
         </Reveal>
-        <div className="mt-14">
-          <Reveal>
-            <Link to="/karya/$slug" params={{ slug: "sabora" }} className="group block">
-              <div className="relative overflow-hidden rounded-[28px] bg-accent/40 p-3 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-soft">
-                <img
-                  src={sabora}
-                  alt="Tampilan Sabora"
-                  loading="lazy"
-                  width={1280}
-                  height={896}
-                  className="aspect-[4/3] w-full rounded-[20px] object-cover transition-transform duration-700 group-hover:scale-[1.03] md:aspect-[16/9]"
-                />
-                <span className="absolute bottom-6 right-6 flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm text-primary-foreground opacity-0 transition-opacity group-hover:opacity-100">
-                  Lihat Studi Kasus <ArrowUpRight className="size-4" />
-                </span>
-              </div>
-              <div className="mt-4 flex flex-wrap items-center gap-2 px-1">
-                <h3 className="mr-auto text-xl font-medium">Sabora</h3>
-                <span className="rounded-full border border-border px-3 py-1 text-xs">Restaurant Fine Dining Website</span>
-                <span className="rounded-full bg-accent px-3 py-1 text-xs text-accent-foreground">Concept Project</span>
-              </div>
-            </Link>
-          </Reveal>
+        <div className="mt-14 grid gap-10">
+          {PROJECTS.map((p) => (
+            <Reveal key={p.slug}>
+              <Link to="/karya/$slug" params={{ slug: p.slug }} className="group block">
+                <div className="relative overflow-hidden rounded-[28px] bg-accent/40 p-3 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-soft">
+                  <img
+                    src={p.gambar[0]?.src}
+                    alt={p.gambar[0]?.alt ?? p.judul}
+                    loading="lazy"
+                    width={1280}
+                    height={896}
+                    className="aspect-[4/3] w-full rounded-[20px] object-cover transition-transform duration-700 group-hover:scale-[1.03] md:aspect-[16/9]"
+                  />
+                  <span className="absolute bottom-6 right-6 flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm text-primary-foreground opacity-0 transition-opacity group-hover:opacity-100">
+                    Lihat Studi Kasus <ArrowUpRight className="size-4" />
+                  </span>
+                </div>
+                <div className="mt-4 flex flex-wrap items-center gap-2 px-1">
+                  <h3 className="mr-auto text-xl font-medium">{p.judul}</h3>
+                  <span className="rounded-full border border-border px-3 py-1 text-xs">{p.kategori}</span>
+                  <span className="rounded-full bg-accent px-3 py-1 text-xs text-accent-foreground">Concept Project</span>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
         </div>
       </section>
 
